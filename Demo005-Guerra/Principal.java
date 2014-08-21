@@ -34,20 +34,23 @@ public class Principal
                         + enemigo.getNombreCompleto()
                         + " vida "
                         + enemigo.getVida());
+            if (enemigo.getAviso()){
+                System.out.println("Escudo del  "+ enemigo.getNombreCompleto()+ "utilizado");}
+                      
             
             //Preguntar si murio
             if (!enemigo.estaVivo()){
                 participantes.remove(enemigo);
-            }
+                                          }
             
         }
         
         System.out.println("El sobreviviente: "+participantes.get(0).getNombreCompleto());
-        
+         System.out.println("Vida Restante: "+participantes.get(0).getVida());
     }
     
-    
-    public static Participante dameUnParticipante(){
+    //Obtiene aleatoriamente un PArticipante
+    private static Participante dameUnParticipante(){
         Participante p = null;
         int indice = randInt(0, 2);
         switch (indice){
@@ -67,7 +70,7 @@ public class Principal
     
     
     //Numero random aletario entre un rango especifico
-    public static int randInt(int min, int max) {
+    private static int randInt(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
