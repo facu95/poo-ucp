@@ -1,11 +1,13 @@
 
 
+
 public abstract class Participante
 {
     //Variables internas
     private String nombre;
-    private int vida;
-    
+    private double vida;
+    private boolean escudoactivo = true;
+    private boolean aviso = false;
     //GEtters/Setters
     public String getNombre(){
         return nombre;
@@ -15,20 +17,21 @@ public abstract class Participante
     }
     
    
-    public int getVida(){
+    public double getVida(){
         return vida;
     }
-    public void setVida(int valor){
+    public void setVida(double valor){
         vida = valor;
     }
     
     
     //Comportamiento (Metodos)
-    public void disparar(Participante enemigo){
-        enemigo.danio(400);
-    }
+    //Disparar, metodo asbtracto (de clase) 
+    //para ser implementado en cada subclase
+    public abstract void disparar(Participante enemigo);
+       
     
-    public int danio(int valor){
+    public double danio(double valor){
         setVida(getVida() - valor);
         return getVida();
     }
@@ -38,10 +41,26 @@ public abstract class Participante
     public boolean estaVivo(){
         return (getVida()>0);
     }
-    
-    
-    
+    public boolean getAviso(){
+        return aviso;
+    }
     //Metodo "abstracto"
     public abstract String getNombreCompleto();
     
+     public abstract double danioParaTanque();
+     public abstract double danioParaAvion();
+     public abstract double danioParaSoldado();
+    
+        public double usarEscudo(){
+         if (escudoactivo) {
+            escudoactivo = false;
+            aviso = true;
+            return 0.8;
+            } 
+         else{
+            aviso = false;
+            return 1;
+            }
+        
+    }
 }
