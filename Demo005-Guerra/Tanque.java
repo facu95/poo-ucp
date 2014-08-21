@@ -1,4 +1,3 @@
-
 public class Tanque 
             extends Participante
 {
@@ -12,15 +11,30 @@ public class Tanque
         //enemigo.danio(400);
         
         //Ejemplo 2
-        if(enemigo instanceof Tanque){
-            enemigo.danio(500);
-        }else if(enemigo instanceof Avion){
-            enemigo.danio(200);
-        }else if(enemigo instanceof Soldado){
-            enemigo.danio(700);
+//         if(enemigo instanceof Tanque){
+//             enemigo.danio(500);
+//         }else if(enemigo instanceof Avion){
+//             enemigo.danio(200);
+//         }else if(enemigo instanceof Soldado){
+//             enemigo.danio(700);
+//         }
+        //Ejemplo 3
+            enemigo.danio(enemigo.danioParaTanque());
         }
         
+        public double danioParaTanque(){
+                return 500*usarEscudo();
+            }
+        public double danioParaSoldado(){
+                return 300*usarEscudo();
+            }        
+        public double danioParaAvion(){
+                return 600*usarEscudo();
+            }        
+  
+
         
         
-    }
+        
+    
 }
